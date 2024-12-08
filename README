@@ -1,12 +1,10 @@
 ###########################################################
 ## 			 Welcome!!                       ##
-## Code developed by Chamikara Karunasena		 ##      
-## This code generates topology and GAFF forcefield      ## 
-## parameters with explicitely calculated charges of     ## 
-## CM5 population, then run pre-equilibration and        ##
-## production run of the simulated annealing simulations ##
-## 														 ##
+## Code developed by Chamikara Karunasena		 ##   
 ########################################################### 
+## This code automates MD simulation by 
+	1.Generating topology of small organic crystals using GAFF forcefield with explicitely calculated CM5 (Hirshfiled charge model 5) charge populationthen 
+	2.Run pre-equilibration and production run simulaitons 
 
 
 
