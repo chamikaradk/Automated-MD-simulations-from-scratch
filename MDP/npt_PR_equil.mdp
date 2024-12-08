@@ -1,0 +1,78 @@
+; NPT Template for periodic system
+
+; Define section for items such as positional restraints
+; define 	= -DPOSRES
+
+; MD length
+integrator	= md 		; The integrator to use. Other options include sd or steep
+nsteps		= 5000000	; The number of steps to make in the simulation (24000 ps / 0.002 ps = 12000000 steps)
+dt 			= 0.002		; The size of the time step to take. 0.002 for bond contrained / 0.001 for unconstrained
+;comm-mode 	= Angular	; Correction that prevents the COM spinning in simulations. 
+
+; Output Control
+nstxout 		= 1000 		; Same system coordinates every 1.0 ps (500 for dt=0.002 / 1000 for dt=0.001).
+nstvout 		= 1000		; Same system celovities every 1.0 ps (500 for dt=0.002 / 1000 for dt=0.001).
+nstenergy		= 1000		; Same system energies every 1.0 ps (500 for dt=0.002 / 1000 for dt=0.001).
+nstlog			= 1000		; Update the log file every 1.0 ps (500 for dt=0.002 / 1000 for dt=0.001).
+nstcomm			= 1000		; Frequency for COM motion removal.
+nstcalcenergy	= 1000		; How often to calculate system energies. Should be a multiple of nstenergy. 
+;energygrps      = DTS FB TH1 TH2 HX EH CB
+							; This requires communication between GPU and CPU and will slow down simulation
+							; if done too frequently.
+
+; Temperature Coupling
+tcoupl			= V-rescale		; Modified Berendsen thermostat that ensures a proper canonical ensemble 
+								; is generated.
+nsttcouple		= -1			; Sets update frequency to nstlist.
+tc-grps			= System			; Groups to couple separately to temperature bath.
+tau-t			= 0.1			; Time constant for coupling (one for each group in tc-grps).
+ref-t			= 298.15			; Reference temperature for coupling (one for each group in tc-grps).
+
+; Pressure Coupling
+pcoupl			= Parrinello-Rahman	; Extended-ensemble pressure coupling where the box vectors are 
+										; subject to an equation of motion. More accurate than Berendsen.
+pcoupltype		= isotropic				; Isotropic pressure coupling with time constant.
+nstpcouple		= 1					; Sets update frequency to nstlist.
+tau-p			= 2.0 					; Time constant for coupling.
+ref-p			= 1.0					; Reference pressure, in bar.
+compressibility	= 4.5e-5				; Isothermal compressibility of water, bar^-1.
+refcoord_scaling	= com 				; Scale the center of mass of the reference coordinates witht the 
+										; scaling matrix of the pressure coupling. 
+
+; Neighbor Searching
+cutoff-scheme	= Verlet	; Generate pair list with buffering to conserve energy. GPU-accelerated.
+							; rvdw=rcoulomb.
+ns-type			= grid		; Required for cutoff-scheme=Verlet. 
+nstlist			= 20		; Should be 20 or 40 for use with GPUs. Sets a minimum value for how often to update
+							; neighbor lists. Mdrun will optimize the value unless set to 1. If cutoff-scheme = 
+							; group the value of nstlist will impact the accuracy of the simulation.
+
+; Electrostatics
+coulombtype		= PME		; Particle Mesh Ewald for long-range electrostatics. Best for periodic systems.
+vdwtype			= PME 		; Analogous to coulombtype = PME.
+pme-order		= 4			; Interpolation order for PME. 4 equals cubic interpolation. Might try 6/8/10
+							; for parallel systems while also decreasing grid dimesion.
+fourierspacing	= 0.12		; Sets a lower bound for the spacing for the grid points that will be used along
+							; each axis.
+rcoulomb		= 1.4		; Short-range electrostatic cutoff.
+rvdw			= 1.4		; Short-range van der Waals cutoff.
+
+; Bond Parameters
+continuation	= yes 			; For first dynamics run, else 'yes'
+;continuation = no
+constraint_algorithm = lincs 	; LINear Constraint Solver. Used to constrain bond, angles, or dihedrals.
+constraints		= All-bonds		; All bonds are constrained.
+lincs-iter		= 2				; Accuracy of LINCS
+lincs-order		= 4				; Accuracy of LINCS
+
+; Periodic Boundary Conditions
+pbc				= xyz		; 3D PBC. Other options include no and xz.
+periodic-molecules = no 	; Molecules are finite. Yes means that infinite polymers are being used.
+
+; Dispersion Correction
+dispcorr		= enerpres	; Apply long range dispersion corrections for Energy and Pressure
+
+; Velocity Generation
+gen-vel			= no 		; Assign velocities from Maxwell distributions.
+;gen-temp		= 300 		; Temperature for Maxwell distribution.
+;gen-seed		= -1		; Generate a random seed.
