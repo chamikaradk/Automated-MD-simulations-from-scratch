@@ -1,6 +1,6 @@
 ###########################################################
-## 					    Welcome!! `                      ##
-## Code developed by Chamikara Karunasena				 ##      
+## 			 Welcome!!                       ##
+## Code developed by Chamikara Karunasena		 ##      
 ## This code generates topology and GAFF forcefield      ## 
 ## parameters with explicitely calculated charges of     ## 
 ## CM5 population, then run pre-equilibration and        ##
