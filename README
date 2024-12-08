@@ -1,0 +1,20 @@
+###########################################################
+## 					    Welcome!! `                      ##
+## Code developed by Chamikara Karunasena				 ##      
+## This code generates topology and GAFF forcefield      ## 
+## parameters with explicitely calculated charges of     ## 
+## CM5 population, then run pre-equilibration and        ##
+## production run of the simulated annealing simulations ##
+## 														 ##
+########################################################### 
+
+
+
+Step1: Copy and paste the *cif file into the CIF directory, change name of the 1_cif2gro.py accordingly
+Step2: Enter molecule name (stick to 3 letter code)
+Step3: Select the size of the supercell in 5_getbox.py 
+	Currently, generates a square box cube with defined number of repeat unit cells  (i e. box=4 will give you cubic box with 4 repeat unit size volume of the longest axis of the molecule) 
+Step4: Enter in appropriate MD protocol parameters (*mdp options handled through python files)
+Step5: Run the MD simulation through bash submission files (Run_automated_workflow.sh). 
+	This includes thermal annealing simulations at desired hearing/cooling rates
+		
