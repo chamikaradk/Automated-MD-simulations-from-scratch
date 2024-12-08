@@ -4,7 +4,7 @@
 ########################################################### 
 ## This code automates MD simulation by 
 	1.Generating topology of small organic crystals using GAFF forcefield with explicitely calculated CM5 (Hirshfiled charge model 5) charge populationthen 
-	2.Run pre-equilibration and production run simulaitons 
+	2.Run pre-equilibration and production run simulaitons including thermal annealing simulations at desired anneal rate
 
 
 
