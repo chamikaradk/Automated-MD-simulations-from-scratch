@@ -6,12 +6,12 @@
 	1.Generating topology of small organic crystals using GAFF forcefield with explicitely calculated CM5 (Hirshfiled charge model 5) charge population 
 	2.Run pre-equilibration and production run simulaitons including thermal annealing simulations at desired anneal rate, using MD python wrapper
 
+Modules need to be loaded are provided in the module file
 
-
-Step1: Copy and paste the *cif file into the CIF directory, change name of the 1_cif2gro.py accordingly
+Step1: Copy and paste the *cif file into the CIF directory, change input file name of the 1_cif2gro.py accordingly
 Step2: Enter molecule name (stick to 3 letter code)
 Step3: Select the size of the supercell in 5_getbox.py 
-	Currently, generates a square box cube with defined number of repeat unit cells  (i e. box=4 will give you cubic box with 4 repeat unit size volume of the longest axis of the molecule) 
+	Currently, generates a nearly cubic supercell box with defined number of repeat unit cells  (i e. box=4 will give you cubic box with 4 repeat unit size volume of the longest axis of the molecule, while maintaining other dimensions close to that of the longest) 
 Step4: Enter in appropriate MD protocol parameters (*mdp options handled through python files)
 Step5: Run the MD simulation through bash submission files (Run_automated_workflow.sh). 
 	This includes thermal annealing simulations at desired hearing/cooling rates
