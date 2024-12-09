@@ -2,6 +2,9 @@
 ## 			 Welcome!!                       ##
 ## Code developed by Chamikara Karunasena		 ##   
 ########################################################### 
+
+Use of code is demonstated in the published Chapter 5 of my PhD Dissertation (open access): https://uknowledge.uky.edu/chemistry_etds/173/
+
 ## This code automates MD simulation by 
 	1.Generating topology of small organic crystals using GAFF forcefield with explicitely calculated CM5 (Hirshfiled charge model 5) charge population 
 	2.Run pre-equilibration and production run simulaitons including thermal annealing simulations at desired anneal rate, using MD python wrapper
