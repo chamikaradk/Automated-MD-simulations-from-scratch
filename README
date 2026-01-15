@@ -17,5 +17,5 @@ Step3: Select the size of the supercell in 5_getbox.py
 	Currently, generates a nearly cubic supercell box with defined number of repeat unit cells  (i e. box=4 will give you cubic box with 4 repeat unit size volume of the longest axis of the molecule, while maintaining other dimensions close to that of the longest) 
 Step4: Enter in appropriate MD protocol parameters (*mdp options handled through python files)
 Step5: Run the MD simulation through bash submission files (Run_automated_workflow.sh). 
-	This includes thermal annealing simulations at desired hearing/cooling rates
+	This includes thermal annealing simulations at desired heating/cooling rates
 		
