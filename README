@@ -1,14 +1,7 @@
-###########################################################
-## 			 Welcome!!                       ##
-## Code developed by Chamikara Karunasena		 ##   
-########################################################### 
-
-Use of code is demonstated in the published Chapter 5 of my PhD Dissertation (open access): https://uknowledge.uky.edu/chemistry_etds/173/
-
-## This code automates MD simulation by 
+This code automates MD simulation by 
 	1.Generating topology of organic crystals using GAFF forcefield with explicitely calculated CM5 (Hirshfiled charge model 5) charge population 
 	2.Run pre-equilibration and production run simulaitons including thermal annealing simulations at desired anneal rate, using MD python wrapper
-
+Use of code is demonstated in the published Chapter 5 of my PhD Dissertation (open access): https://uknowledge.uky.edu/chemistry_etds/173/
 Modules need to be loaded are provided in the module file
 
 Step1: Copy and paste the *cif file into the CIF directory, change input file name of the 1_cif2gro.py accordingly
